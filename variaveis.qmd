@@ -1,0 +1,102 @@
+---
+title: "Variáveis e pares aleatórios"
+engine: markdown
+---
+
+## Massa, distribuição, média e variância
+
+Para uma variável discreta, `sum(p)` deve ser 1. A função de distribuição em $x$ é $F(x)=P(X\le x)$. A variância é $E(X^2)-E(X)^2$.
+
+### Exercícios 3 e 4 · slides pp. 25 e 28
+
+$X$ toma os valores $-2,-1,0,1$ com probabilidade 0,1 cada e o valor 2 com probabilidade $p$. Determine $p$, $F$, $P(-2<X\le0)$, $E(X)$ e $\operatorname{Var}(X)$.
+
+```{webr-r}
+x <- -2:2
+p <- c(rep(.1, 4), 1 - 4*.1)
+print(data.frame(x, massa = p, F = cumsum(p)))
+print(c(intervalo = sum(p[x > -2 & x <= 0]),
+        media = sum(x*p),
+        variancia = sum(x^2*p) - sum(x*p)^2))
+```
+
+<details><summary>Ver resposta</summary>
+
+$p=0{,}6$. A função $F$ vale 0 antes de $-2$; depois toma sucessivamente 0,1; 0,2; 0,3; 0,4; e 1 a partir de 2. A probabilidade pedida é 0,2, a média é 1 e a variância é 2.
+
+</details>
+
+### Exercício 5 · slides p. 30
+
+Um enfermeiro atende no máximo cinco doentes por noite. As probabilidades de atender 1, 2, 3, 4 e 5 são 0,10, 0,20, 0,23, 0,20 e 0,18. Encontre $P(X=0)$, $P(X>3)$, $P(X\le3)$, a média e represente massa e distribuição.
+
+```{webr-r}
+x <- 0:5
+p <- c(1 - sum(c(.10,.20,.23,.20,.18)), .10,.20,.23,.20,.18)
+print(c(nenhum = p[1], mais_de_3 = sum(p[x>3]),
+        ate_3 = sum(p[x<=3]), media = sum(x*p)))
+par(mfrow=c(1,2))
+plot(x, p, type='h', lwd=5, xlab='Doentes', ylab='P(X=x)', main='Massa')
+plot(x, cumsum(p), type='s', lwd=2, ylim=c(0,1), xlab='Doentes', ylab='F(x)', main='Distribuição')
+```
+
+<details><summary>Ver resposta</summary>
+
+$P(X=0)=0{,}09$, $P(X>3)=0{,}38$, $P(X\le3)=0{,}62$ e $E(X)=2{,}89$ doentes.
+
+</details>
+
+## Pares aleatórios
+
+Uma tabela conjunta permite obter marginais com `rowSums()` e `colSums()`. Ter ensaios individuais independentes não implica que funções sobrepostas desses ensaios sejam independentes.
+
+### Exercício 6 · slides p. 36
+
+João faz três lançamentos de basquetebol independentes, cada um com probabilidade 0,6 de cesto. $X$ conta os cestos nos dois primeiros e $Y$ nos dois últimos. Calcule a tabela conjunta, $P(Y=1\mid X=2)$, as massas de $W=X+Y$ e $Z=\min(X,Y)$, e a distribuição de $Y\mid X=1$.
+
+```{webr-r}
+triplos <- expand.grid(a=0:1, b=0:1, c=0:1)
+triplos$prob <- .6^(triplos$a+triplos$b+triplos$c) *
+                .4^(3-triplos$a-triplos$b-triplos$c)
+triplos$X <- triplos$a + triplos$b
+triplos$Y <- triplos$b + triplos$c
+junta <- xtabs(prob ~ X + Y, data=triplos)
+print(junta)
+print(sum(triplos$prob[triplos$Y==1 & triplos$X==2]) /
+      sum(triplos$prob[triplos$X==2]))
+print(xtabs(prob ~ I(X+Y), data=triplos))
+print(xtabs(prob ~ I(pmin(X,Y)), data=triplos))
+print(xtabs(prob ~ Y, data=subset(triplos, X==1)) /
+      sum(triplos$prob[triplos$X==1]))
+```
+
+<details><summary>Ver interpretação</summary>
+
+$P(Y=1\mid X=2)=0{,}4$. $X$ e $Y$ não são independentes porque partilham o segundo lançamento: por exemplo, $P(X=2,Y=2)=0{,}216$, enquanto $P(X=2)P(Y=2)=0{,}1296$. Para $Y\mid X=1$, as probabilidades de 0, 1 e 2 são 0,2, 0,5 e 0,3.
+
+</details>
+
+### Exercício 7 · slides p. 39
+
+Considere $f(x,y)=(x+y)/9$, com $x=0,1,2$ e $y=0,1$. Obtenha as marginais, $P(X\le1\mid Y=0)$, $F(1,0)$, médias, covariância e correlação. Para qualquer outro ponto $(a,b)$, a função de distribuição conjunta é a soma das células com $x\le a$ e $y\le b$.
+
+```{webr-r}
+x <- 0:2; y <- 0:1
+joint <- outer(x, y, function(a,b) (a+b)/9)
+px <- rowSums(joint); py <- colSums(joint)
+EX <- sum(x*px); EY <- sum(y*py)
+EXY <- sum(outer(x,y,'*')*joint)
+covXY <- EXY-EX*EY
+varX <- sum(x^2*px)-EX^2; varY <- sum(y^2*py)-EY^2
+print(joint)
+print(list(marginal_X=px, marginal_Y=py,
+  condicional=sum(joint[x<=1,1])/py[1],
+  F_1_0=sum(joint[x<=1,y<=0]),
+  EX=EX, EY=EY, cov=covXY, cor=covXY/sqrt(varX*varY)))
+```
+
+<details><summary>Ver resposta</summary>
+
+$P(X\le1\mid Y=0)=1/3$ e $F(1,0)=1/9$. As marginais são $(1,3,5)/9$ para $X$ e $(3,6)/9$ para $Y$. $E(X)=13/9$, $E(Y)=2/3$, $\operatorname{Cov}(X,Y)=-2/27$ e $\rho\approx-0{,}2294$.
+
+</details>

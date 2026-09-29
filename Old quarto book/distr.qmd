@@ -1,0 +1,52 @@
+# Distribuições {.unnumbered .unlisted}
+
+## Distribuição Qui-quadrado
+
+::: {.callout-note title="Distribuição Qui-quadrado"}
+
+Determine, para $\alpha = 0.01$:
+
+a) $\chi^2_{10,1-\alpha}$
+
+b) $\chi^2_{10,\alpha}$
+
+c) $\chi^2_{8,1-\alpha}$
+
+:::
+
+::: {.callout-tip}
+
+Na alínea a), pretende-se determinar o quantil $0.01$ da distribuição $\chi^2_{10}$.
+```{r,echo=FALSE}
+curve(dchisq(x,10),0,35,ylab = "f(x)")
+abline(v=qchisq(p = 0.01,df = 10),col=2,lwd=2)
+text(8,0.05,"0.99",cex=1.2)
+text(0.5,0,"0.01",cex=1.2)
+text(qchisq(p = 0.01,df = 10)+0.5,0,"?",col=2)
+```
+
+
+:::
+
+```{webr-r}
+qchisq(p = 0.01,df = 10)
+
+```
+
+Alternativamente:
+
+
+```{webr-r}
+qchisq(0.01,10)
+qchisq(p = 0.99,df = 10,lower.tail = FALSE)
+
+```
+
+::: {.callout-important title="Your turn!"}
+Na janela abaixo, escreva o código R que permite obter a resposta para as restantes alíneas:
+:::
+
+```{webr-r}
+#| min-lines: 5
+#| line-numbers: false
+```

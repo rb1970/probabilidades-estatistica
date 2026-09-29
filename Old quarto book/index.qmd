@@ -1,0 +1,6 @@
+# Introdução {.unnumbered .unlisted}
+
+
+Neste tutorial é apresentada uma breve introdução à linguagem **R** e ao ambiente de desenvolvimento **RStudio**. O documento foi concebido como material de apoio às aulas de **Probabilidades e Estatística B (2026/27)**.
+
+Ao longo do tutorial são apresentados exemplos de utilização do R para resolver problemas relacionados com diferentes tópicos da unidade curricular. Sempre que possível, os exemplos são acompanhados de exercícios interativos, permitindo ao estudante experimentar diretamente o código sem sair do documento.

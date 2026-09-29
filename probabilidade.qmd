@@ -1,0 +1,68 @@
+---
+title: "Probabilidade"
+engine: markdown
+---
+
+## Acontecimentos e operações
+
+Para resultados equiprováveis, $P(A)=|A|/|\Omega|$. A união exige retirar a interseção contada duas vezes: $P(A\cup B)=P(A)+P(B)-P(A\cap B)$.
+
+### Exercício 1 · slides p. 14
+
+São dados $P(A)=0{,}50$, $P(B)=0{,}31$, $P(C)=0{,}40$, $P(A\cap B)=0{,}15$, $P(B\cap C)=0{,}06$ e $P(A\cap C)=0$. Determine $P(A\cap B)$, $P(B\cup C)$ e $P(A\cup B\cup C)$.
+
+```{webr-r}
+pA <- .50; pB <- .31; pC <- .40
+pAB <- .15; pBC <- .06; pAC <- 0
+pABC <- 0  # A ∩ C é vazio em probabilidade
+print(c(intersecao_AB = pAB,
+        uniao_BC = pB + pC - pBC,
+        uniao_ABC = pA + pB + pC - pAB - pBC - pAC + pABC))
+```
+
+<details><summary>Ver resposta e interpretação</summary>
+
+$P(A\cap B)=0{,}15$, $P(B\cup C)=0{,}65$ e $P(A\cup B\cup C)=1$. Como $A\cap C$ tem probabilidade zero, a interseção tripla também tem probabilidade zero.
+
+</details>
+
+## Condicionamento, probabilidade total e Bayes
+
+$P(A\mid B)=P(A\cap B)/P(B)$, se $P(B)>0$. Os acontecimentos são independentes quando $P(A\cap B)=P(A)P(B)$.
+
+### Exercício 2 · slides p. 20
+
+Uma seguradora classifica clientes como risco elevado (30%, com probabilidade de acidente 0,25), moderado (45%, com probabilidade 0,16) ou baixo (25%). Entre todos os segurados, 2% têm acidente **e** baixo risco. Calcule $P(\text{acidente})$, verifique a independência entre acidente e risco elevado e calcule $P(\text{elevado}\mid\text{acidente})$.
+
+```{webr-r}
+p_risco <- c(elevado = .30, moderado = .45, baixo = .25)
+p_acidente_dado <- c(elevado = .25, moderado = .16, baixo = .02/.25)
+p_acidente <- sum(p_risco * p_acidente_dado)
+p_elevado_e_acidente <- p_risco['elevado'] * p_acidente_dado['elevado']
+print(c(p_acidente = p_acidente,
+        independente = p_elevado_e_acidente == p_risco['elevado'] * p_acidente,
+        p_elevado_dado_acidente = p_elevado_e_acidente / p_acidente))
+```
+
+<details><summary>Ver resposta</summary>
+
+$P(\text{acidente})=0{,}30(0{,}25)+0{,}45(0{,}16)+0{,}02=0{,}167$. Não há independência: $P(\text{acidente}\mid\text{elevado})=0{,}25\ne0{,}167$. Por Bayes, $P(\text{elevado}\mid\text{acidente})=0{,}075/0{,}167\approx0{,}4491$.
+
+</details>
+
+### Pratique mais · dado condicionado
+
+Num dado equilibrado, $A=$ «sair par» e $B=$ «sair maior que 3». Obtenha $P(A\mid B)$ com conjuntos em R e compare com $P(A)$.
+
+```{webr-r}
+omega <- 1:6
+A <- c(2, 4, 6); B <- c(4, 5, 6)
+print(c(p_A = length(A)/length(omega),
+        p_A_dado_B = length(intersect(A, B))/length(B)))
+```
+
+<details><summary>Ver resposta</summary>
+
+$P(A\mid B)=2/3$, diferente de $P(A)=1/2$; os acontecimentos não são independentes.
+
+</details>

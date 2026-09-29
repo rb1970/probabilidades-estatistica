@@ -1,0 +1,58 @@
+---
+title: "Guia rápido de R"
+engine: markdown
+---
+
+## Quatro prefixos para cada distribuição
+
+| Pergunta | Prefixo | Exemplo | Significado |
+|---|---|---|---|
+| $P(X=x)$ em discreta, densidade em contínua | `d` | `dbinom(2, 10, .3)` | Massa ou altura da densidade |
+| $P(X\le x)$ | `p` | `pbinom(2, 10, .3)` | Probabilidade acumulada |
+| Quantil de probabilidade $u$ | `q` | `qbinom(.9, 10, .3)` | Menor $x$ com $F(x)\ge u$ na discreta |
+| Gerar valores | `r` | `rbinom(100, 10, .3)` | Simulação |
+
+Os sufixos deste tutorial são `binom`, `hyper`, `geom`, `pois`, `unif`, `exp`, `chisq`, `norm`, `t` e `f`. `lower.tail=FALSE` calcula a cauda superior sem subtrair manualmente de 1.
+
+```{webr-r}
+print(c(exatamente_2=dbinom(2,10,.3),
+        ate_2=pbinom(2,10,.3),
+        acima_2=pbinom(2,10,.3,lower.tail=FALSE),
+        percentil_90=qbinom(.9,10,.3)))
+```
+
+## Vetores e filtros
+
+Um vetor evita repetir contas. A condição lógica seleciona apenas as entradas de interesse.
+
+```{webr-r}
+x <- 0:6
+p <- dbinom(x, size=6, prob=.4)
+print(data.frame(x,p))
+print(sum(p[x>=3 & x<=5]))
+```
+
+## Simular para conferir uma conta
+
+`set.seed()` torna o exemplo reproduzível. A frequência simulada aproxima a probabilidade teórica quando o número de simulações cresce.
+
+```{webr-r}
+set.seed(2026)
+amostras <- rbinom(10000, size=25, prob=.10)
+print(c(simulacao=mean(amostras>=6),
+        teoria=pbinom(5,25,.10,lower.tail=FALSE)))
+hist(amostras, breaks=seq(-.5,25.5,1), xlab='Número de pessoas',
+     main='Simulação binomial')
+```
+
+## Erros frequentes
+
+- `pnorm(…, sd=…)` recebe o **desvio padrão**, não a variância. Se $X\sim N(4,4)$ na convenção dos slides, use `sd=sqrt(4)`.
+- `dgeom(k,p)` conta falhas antes do primeiro sucesso. Para a primeira ocorrência na tentativa 6, use `k=5`.
+- Em variáveis discretas, «pelo menos 6» é `P(X>5)`; em R, `pbinom(5,...,lower.tail=FALSE)`.
+- `dhyper(x,m,n,k)` usa `m` marcados e `n` não marcados; a população total é `m+n`.
+- Para `qf()` e `pf()`, mantenha a ordem dos graus de liberdade do numerador e do denominador.
+
+## Como estudar
+
+Leia o enunciado, identifique a variável e os parâmetros, escreva o evento com desigualdades e só depois escolha a função de R. Execute o código inicial e altere os parâmetros para perceber o efeito. Use as respostas recolhidas nos painéis apenas depois de tentar resolver.

@@ -1,0 +1,216 @@
+---
+title: "Contínuas e teorema limite central"
+engine: markdown
+---
+
+Para uma variável contínua, $P(a<X\le b)=F(b)-F(a)$ e $P(X=a)=0$. As famílias abaixo usam parâmetros na convenção de R. Confira `rate` versus `scale` na exponencial e `sd` versus variância na normal.
+
+## Densidade triangular e exponencial
+
+### Exercício 12 · slides p. 67
+
+O consumo $X$ tem densidade $f(x)=x-6$ em $[6,7)$, $f(x)=8-x$ em $[7,8)$ e zero fora. Determine $F(x)$ e $P(6{,}2<X\le7{,}2)$.
+
+```{webr-r}
+F_tri <- function(x) ifelse(x<6,0,ifelse(x<7,(x-6)^2/2,
+                 ifelse(x<8,1-(8-x)^2/2,1)))
+print(c(F_6_2=F_tri(6.2), F_7_2=F_tri(7.2),
+        intervalo=F_tri(7.2)-F_tri(6.2)))
+curve(F_tri(x),from=5.5,to=8.5,xlab='x',ylab='F(x)')
+```
+
+<details><summary>Ver resposta</summary>
+
+$F(x)=0$ para $x<6$, $(x-6)^2/2$ para $6\le x<7$, $1-(8-x)^2/2$ para $7\le x<8$ e 1 para $x\ge8$. A probabilidade é $0{,}68-0{,}02=0{,}66$.
+
+</details>
+
+### Exercício 13 · slides p. 68
+
+Se $T$ tem densidade $\lambda e^{-\lambda t}$ para $t\ge0$, determine $E(T^2)$ e $\operatorname{Var}(T)$. Use `integrate()` para confirmar com $\lambda=2$.
+
+```{webr-r}
+lambda <- 2
+ET <- integrate(function(t) t*dexp(t,rate=lambda),0,Inf)$value
+ET2 <- integrate(function(t) t^2*dexp(t,rate=lambda),0,Inf)$value
+print(c(ET2=ET2, variancia=ET2-ET^2,
+        formula_ET2=2/lambda^2, formula_var=1/lambda^2))
+```
+
+<details><summary>Ver resposta</summary>
+
+$E(T^2)=2/\lambda^2$ e $\operatorname{Var}(T)=1/\lambda^2$. Com $\lambda=2$, são 0,5 e 0,25.
+
+</details>
+
+## Uniforme
+
+### Exercício 14 · slides p. 74
+
+O tempo para completar um teste é uniforme entre 50 e 70 minutos. Confirme que a densidade $1/20$ integra 1; calcule $P(50\le X\le60)$ e $P(X>61)$.
+
+```{webr-r}
+print(c(area=integrate(function(x) dunif(x,50,70),50,70)$value,
+        entre_50_60=punif(60,50,70)-punif(50,50,70),
+        maior_61=punif(61,50,70,lower.tail=FALSE)))
+```
+
+<details><summary>Ver resposta</summary>
+
+A área é 1; as probabilidades são 0,5 e 0,45.
+
+</details>
+
+## Qui-quadrado
+
+### Exercício 15 · slides p. 77
+
+Com $\alpha=0{,}01$, calcule os quantis de probabilidades $1-\alpha$ e $\alpha$ para 10 graus de liberdade, e $1-\alpha$ para 8 graus. Para $X\sim\chi^2_{10}$, encontre $a$ tal que $P(X>a)=0{,}05$, $P(X\le a)=0{,}025$ e $P(3{,}25<X\le a)=0{,}95$.
+
+```{webr-r}
+alpha <- .01
+print(c(q10_99=qchisq(1-alpha,10), q10_01=qchisq(alpha,10),
+        q8_99=qchisq(1-alpha,8)))
+print(c(cauda_05=qchisq(.05,10,lower.tail=FALSE),
+        acumulada_025=qchisq(.025,10),
+        intervalo=qchisq(pchisq(3.25,10)+.95,10)))
+```
+
+<details><summary>Ver estratégia</summary>
+
+Na última condição, $F(a)=F(3{,}25)+0{,}95$. O código usa `pchisq()` para obter a primeira parcela e `qchisq()` para inverter a soma.
+
+</details>
+
+::: {.callout-tip title="Duas formas de indicar o mesmo quantil"}
+O livro anterior apresenta uma visualização da distribuição qui-quadrado. O quantil de probabilidade acumulada $0{,}01$ também pode ser obtido pedindo uma cauda superior de $0{,}99$. Experimente as duas expressões e observe a linha no gráfico.
+:::
+
+```{webr-r}
+q_esquerda <- qchisq(p=.01, df=10)
+q_direita <- qchisq(p=.99, df=10, lower.tail=FALSE)
+print(c(acumulada=q_esquerda, cauda_superior=q_direita))
+curve(dchisq(x,df=10),from=0,to=35,xlab='x',ylab='f(x)',
+      main='Qui-quadrado com 10 graus de liberdade')
+abline(v=q_esquerda,col=2,lwd=2)
+```
+
+## Normal
+
+Em R, `pnorm(x, mean, sd)` usa **desvio padrão**, mesmo quando a notação matemática apresenta a variância como segundo parâmetro.
+
+### Exercícios 16 e 17 · slides p. 86
+
+Para $Z\sim N(0,1)$, calcule $P(Z\le0{,}53)$, $P(Z>1{,}20)$, $P(-1{,}21<Z\le1{,}20)$ e $P(Z>-2{,}27)$. Encontre $a$ para $F(a)=0{,}6591$ e $F(a)=0{,}0934$. Com $\alpha=0{,}05$, calcule $z_\alpha$ e $z_{\alpha/2}$.
+
+```{webr-r}
+print(c(ate_053=pnorm(.53), acima_120=pnorm(1.20,lower.tail=FALSE),
+        intervalo=pnorm(1.20)-pnorm(-1.21),
+        acima_menos_227=pnorm(-2.27,lower.tail=FALSE)))
+print(c(a1=qnorm(.6591), a2=qnorm(.0934),
+        z_alpha=qnorm(.95), z_alpha_2=qnorm(.975)))
+```
+
+<details><summary>Ver estratégia</summary>
+
+Use `pnorm()` para áreas e `qnorm()` para valores no eixo horizontal. Uma cauda superior de área $\alpha$ corresponde ao quantil acumulado $1-\alpha$.
+
+</details>
+
+### Exercício 18 · slides p. 87
+
+Sejam $X\sim N(4,4)$ e $Y\sim N(6,9^2)$ independentes, onde os segundos parâmetros representam variâncias. Calcule três probabilidades para $X$: $P(X<6{,}84)$, $P(X>2{,}60)$ e $P(1{,}26<X\le8{,}02)$. Determine as distribuições de $X+Y$, $Y-X$, $X-Y$ e $0{,}4+1{,}5X$.
+
+```{webr-r}
+muX <- 4; sdX <- sqrt(4)
+muY <- 6; sdY <- 9
+print(c(ate_684=pnorm(6.84,muX,sdX),
+        acima_260=pnorm(2.60,muX,sdX,lower.tail=FALSE),
+        intervalo=pnorm(8.02,muX,sdX)-pnorm(1.26,muX,sdX)))
+print(data.frame(variavel=c('X+Y','Y-X','X-Y','0.4+1.5X'),
+  media=c(muX+muY,muY-muX,muX-muY,.4+1.5*muX),
+  variancia=c(4+81,81+4,4+81,1.5^2*4)))
+```
+
+<details><summary>Ver resposta</summary>
+
+$X+Y\sim N(10,85)$, $Y-X\sim N(2,85)$, $X-Y\sim N(-2,85)$ e $0{,}4+1{,}5X\sim N(6{,}4,9)$. A independência permite somar variâncias nas somas e diferenças.
+
+</details>
+
+### Exercício 19 · slides p. 91
+
+Numa empresa de 560 trabalhadores, a concentração do químico no sangue é $N(120,30^2)$ mg/dl. Quantos se esperam entre 90 e 150? Se 56 pessoas têm os valores mais graves, qual é o limiar desse grupo? Qual é $P(X\ge180)$?
+
+```{webr-r}
+print(c(esperados_90_150=560*(pnorm(150,120,30)-pnorm(90,120,30)),
+        limiar_10_porcento=qnorm(1-56/560,120,30),
+        acima_180=pnorm(180,120,30,lower.tail=FALSE)))
+```
+
+<details><summary>Ver interpretação</summary>
+
+O número esperado é cerca de 382 trabalhadores. Os 56 mais graves correspondem aos 10% superiores; o limiar é cerca de 158,45 mg/dl. Acima de 180 mg/dl, a probabilidade é cerca de 0,0228.
+
+</details>
+
+## Teorema limite central
+
+Para 60 cortes independentes de desperdício uniforme em $[0,25]$ cm, o custo total é aproximadamente normal com média $60(0{,}25)(12{,}5)$ euros e desvio padrão $0{,}25\sqrt{60(25^2/12)}$.
+
+### Exercício 20 · slides p. 95
+
+Calcule $P(X>15)$, a média e o desvio padrão de um corte, e a probabilidade aproximada de o custo total de 60 cortes ficar entre 170 e 190 euros.
+
+```{webr-r}
+mu <- 25/2; sigma <- 25/sqrt(12)
+mu_total <- 60*.25*mu
+sd_total <- .25*sqrt(60)*sigma
+print(c(um_corte_acima_15=punif(15,0,25,lower.tail=FALSE),
+        media_cm=mu, dp_cm=sigma,
+        custo_170_190=pnorm(190,mu_total,sd_total)-pnorm(170,mu_total,sd_total)))
+```
+
+<details><summary>Ver interpretação</summary>
+
+$P(X>15)=0{,}4$, $E(X)=12{,}5$ cm e $\sigma_X\approx7{,}217$ cm. A última probabilidade é uma aproximação pelo teorema limite central; a média do custo é 187,50 €.
+
+</details>
+
+## t de Student e F
+
+### Exercício 21 · slides p. 100
+
+Com $\alpha=0{,}05$, calcule os quantis de probabilidades $1-\alpha$ e $\alpha$ de $t_{10}$ e os quantis $1-\alpha/2$ e $\alpha/2$ de $t_8$. Para $X\sim t_{10}$, encontre $a$ tal que $P(X>a)=0{,}75$ e $P(X\le a)=0{,}95$.
+
+```{webr-r}
+a <- .05
+print(c(t10_95=qt(1-a,10), t10_05=qt(a,10),
+        t8_975=qt(1-a/2,8), t8_025=qt(a/2,8),
+        cauda_75=qt(.75,10,lower.tail=FALSE),
+        acumulada_95=qt(.95,10)))
+```
+
+<details><summary>Ver estratégia</summary>
+
+`qt(.75, 10, lower.tail=FALSE)` pede o ponto com 75% da área à direita; equivale a `qt(.25,10)`.
+
+</details>
+
+### Exercício 22 · slides p. 104
+
+Com $\alpha=0{,}05$, calcule os quantis $1-\alpha$ e $\alpha$ de $F_{10,5}$ e os quantis $1-\alpha/2$ e $\alpha/2$ de $F_{20,10}$. Para $X\sim F_{10,5}$, encontre $a$ tal que $P(X>a)=0{,}45$ e $P(X\le a)=0{,}95$.
+
+```{webr-r}
+a <- .05
+print(c(f10_5_95=qf(1-a,10,5), f10_5_05=qf(a,10,5),
+        f20_10_975=qf(1-a/2,20,10), f20_10_025=qf(a/2,20,10),
+        cauda_45=qf(.45,10,5,lower.tail=FALSE),
+        acumulada_95=qf(.95,10,5)))
+```
+
+<details><summary>Ver estratégia</summary>
+
+Na distribuição F, a ordem dos graus de liberdade importa: `df1` pertence ao numerador e `df2` ao denominador.
+
+</details>

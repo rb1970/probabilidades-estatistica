@@ -1,0 +1,46 @@
+project:
+  type: book
+  output-dir: _site
+  resources:
+    - Aulas_PEB_1.pdf
+    - webex.js
+
+book:
+  title: "PE.B | Probability and Statistics"
+  author: "Regina Bispo"
+  search: true
+  sidebar:
+    tools:
+      - icon: house
+        href: index.qmd
+        text: "Home"
+    logo: images/logoPEB.png
+    title: "Probability and Statistics"
+    style: docked
+    background: light
+  page-footer:
+    center: "Copyright 2026, Regina Bispo"
+    border: false
+  chapters:
+    - index.qmd
+    - whatsR.qmd
+    - distribuicoes.qmd
+
+format:
+  html:
+    theme: cosmo
+    css:
+      - styles.css
+      - webex.css
+    include-after-body: webex.js
+    number-sections: true
+    code-fold: true
+    toc-location: right
+    toc: true
+    code-copy: true
+    
+filters:
+  - webr
+
+execute:
+  eval: false

@@ -1,0 +1,35 @@
+---
+title: "Welcome to PE B"
+subtitle: "2026/27"
+engine: markdown
+---
+
+This tutorial provides a brief introduction to the **R** programming language and the **RStudio** development environment. The document was designed as supplementary material for any course on **Probability and Statistics**.
+
+Throughout the tutorial, examples are provided on how to use R to solve problems related to different topics related to Probability and Inferencial Statistics. The examples are accompanied by interactive exercises, allowing students to edit and run the code directly without leaving the tutorial. An internet connection is required, and execution may take a few seconds. You can also copy the code into R or RStudio.
+
+# Learning Path {.unnumbered}
+
+::: {.column-margin}
+![Course content. Artwork by @allison_horst](images/coursecontent.png)
+:::
+
+This tutorial begins with a brief description introducing R and RStudio. R is then used to explore selected topics.
+
+2. Introduction:
+
+   2.1 [What is R?](#whatR)
+   
+   2.2 [What is RStudio?](#whatRStudio)
+   
+   2.3 [Documentation](#doc)
+   
+3. Probability:
+
+   3.1 [Discrete distributions](#ddistr)
+   
+   3.2 [Continuous distribution](#cdistr)
+   
+4. Statistics
+
+

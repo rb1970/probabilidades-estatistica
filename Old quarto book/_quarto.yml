@@ -1,0 +1,37 @@
+project:
+  type: book
+
+book:
+  title: "Probabilidades e Estatística B"
+  author: "Regina Bispo"
+  search: true
+  sidebar:
+    logo: images/logo.png
+    style: docked
+    background: light
+  page-footer: 
+    center: "Copyright 2026, Regina Bispo" 
+    border: false
+  chapters:
+    - index.qmd
+    - whatsR.qmd
+    - doc.qmd
+    - distr.qmd
+
+format:
+  html:
+    theme: cosmo
+    number-sections: true
+    code-fold: true
+    toc-location: right
+    code-copy: true
+    toc: true
+    toc-title: "Conteúdo"
+
+execute:
+  freeze: auto
+
+engine: knitr
+
+filters:
+  - coatless-quarto/webr

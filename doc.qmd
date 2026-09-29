@@ -1,0 +1,61 @@
+---
+engine: markdown
+---
+
+# Documentação
+
+Uma das vantagens do R é a grande quantidade de documentação disponível. Além da documentação integrada no próprio software, existem manuais, livros e inúmeros recursos produzidos pela comunidade.
+
+## Manuais
+
+Entre os principais manuais oficiais encontram-se:
+
+* *An Introduction to R* — introdução à linguagem R e às suas principais funcionalidades;
+
+* *R Reference* — documentação de referência da linguagem e do ambiente R;
+
+* *R Data Import/Export* — informação sobre importação e exportação de dados;
+
+* *R Language Definition* — descrição mais detalhada da linguagem R;
+
+* *Writing R Extensions* — documentação destinada sobretudo ao desenvolvimento de pacotes;
+
+* *R Internals* — descrição de aspetos internos da implementação do R;
+
+* *Installation and Administration* — informação sobre instalação e administração do R.
+
+Os manuais oficiais podem ser consultados em:
+
+https://cran.r-project.org/manuals.html
+
+## Outros recursos gratuitos
+
+Existem também numerosos recursos gratuitos que podem ser úteis para complementar o estudo:
+
+* *Using R for Data Analysis and Graphics — Introduction, Examples and Commentary*, John Maindonald;
+
+* *Simple R*, John Verzani;
+
+* *Practical Regression and Anova using R*, Julian Faraway;
+
+* *An Introduction to R: Software for Statistical Modelling and Computing*, Petra Kuhnert e Bill Venables;
+
+* *R for Beginners*, Emmanuel Paradis;
+
+* *Gráficos Estadísticos con R*, Juan Carlos Correa e Nelfi González;
+
+* *R Reference Card*, Tom Short;
+
+* *The R Inferno*, Patrick Burns.
+
+## Livros
+
+Existe uma enorme quantidade de livros dedicados ao R. Apresentam-se aqui apenas alguns exemplos:
+
+* Crawley (2008). *The R Book*. John Wiley & Sons.
+
+* Faraway (2004). *Linear Models with R*. Chapman & Hall/CRC.
+
+* Zuur, Ieno, Walker, Saveliev e Smith (2009). *Mixed Effects Models and Extensions in Ecology with R*. Springer.
+
+* Torgo (2009). *A linguagem R — Programação para a análise de dados*. Escolar Editora.

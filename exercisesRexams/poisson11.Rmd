@@ -1,0 +1,42 @@
+```{r data-generation, echo=FALSE, results="hide"}
+library(exams)
+vehicles <- 8
+weekly_mean <- 3
+a <- dpois(vehicles - 1, weekly_mean)
+b <- dpois(vehicles, 2 * weekly_mean)
+pair <- function(x, y) sprintf("(a) %.4f; (b) %.4f", x, y)
+answers <- c(pair(a, b), pair(ppois(vehicles - 1, weekly_mean), b),
+  pair(a, ppois(vehicles, 2 * weekly_mean)),
+  pair(dpois(vehicles, weekly_mean), b))
+solutions <- c(TRUE, FALSE, FALSE, FALSE)
+ord <- sample(seq_along(answers))
+answers <- answers[ord]
+solutions <- solutions[ord]
+```
+
+Question
+========
+
+A motorhome rental company owns `r vehicles` vehicles. During summer, weekly demand follows a Poisson distribution with mean `r weekly_mean` and is independent from week to week.
+
+(a) What is the probability that exactly one motorhome is not rented in a given week?  
+(b) What is the probability that total demand over two weeks is exactly `r vehicles` motorhomes?
+
+Choose the pair containing the two correct answers.
+
+```{r question-list, echo=FALSE, results="asis"}
+answerlist(answers, markup = "markdown")
+```
+
+Solution
+========
+
+For (a), weekly demand must equal `r vehicles - 1`, giving `r sprintf("%.4f", a)`. For (b), total demand over two independent weeks is Poisson with mean `r 2 * weekly_mean`, giving `r sprintf("%.4f", b)`.
+
+Meta-information
+================
+
+exname: Poisson motorhome demand  
+extype: schoice  
+exsolution: `r mchoice2string(solutions)`  
+exshuffle: TRUE

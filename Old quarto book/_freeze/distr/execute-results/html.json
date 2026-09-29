@@ -1,0 +1,17 @@
+{
+  "hash": "e79ad9dc219d2824376a5f420745e195",
+  "result": {
+    "engine": "knitr",
+    "markdown": "# Distribuições {.unnumbered .unlisted}\n\n## Distribuição Qui-quadrado\n\n::: {.callout-note title=\"Distribuição Qui-quadrado\"}\n\nDetermine, para $\\alpha = 0.01$:\n\na) $\\chi^2_{10,1-\\alpha}$\n\nb) $\\chi^2_{10,\\alpha}$\n\nc) $\\chi^2_{8,1-\\alpha}$\n\n:::\n\n::: {.callout-tip}\n\nNa alínea a), pretende-se determinar o quantil $0.01$ da distribuição $\\chi^2_{10}$.\n\n::: {.cell}\n::: {.cell-output-display}\n![](distr_files/figure-html/unnamed-chunk-1-1.png){width=672}\n:::\n:::\n\n\n\n:::\n\n```{webr-r}\nqchisq(p = 0.01,df = 10)\n\n```\n\nAlternativamente:\n\n\n```{webr-r}\nqchisq(0.01,10)\nqchisq(p = 0.99,df = 10,lower.tail = FALSE)\n\n```\n\n::: {.callout-important title=\"Your turn!\"}\nNa janela abaixo, escreva o código R que permite obter a resposta para as restantes alíneas:\n:::\n\n```{webr-r}\n#| min-lines: 5\n#| line-numbers: false\n```\n",
+    "supporting": [
+      "distr_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

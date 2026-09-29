@@ -1,0 +1,53 @@
+---
+engine: markdown
+---
+
+# RStudio
+
+O **RStudio** é um ambiente de desenvolvimento integrado (IDE, *Integrated Development Environment*), para trabalhar com o R.
+
+O RStudio não substitui o R. O R é a linguagem. O
+RStudio é a aplicação que visa facilitar escrever código, executar
+comandos, organizar ficheiros, visualizar gráficos e consultar ajuda.
+
+As principais vantagens do RStudio são:
+
+* permite escrever e guardar código em ficheiros próprios;
+
+* facilita a execução de comandos R;
+
+* organiza, numa só janela, código, consola, gráficos, ficheiros, pacotes e ajuda;
+
+* inclui realce de sintaxe, atalhos e sugestões automáticas;
+
+* ajuda a trabalhar de forma mais organizada e reprodutível.
+
+Para instalar o RStudio Desktop, pode usar-se a página oficial da Posit: [https://posit.co/download/rstudio-desktop](https://posit.co/download/rstudio-desktop)
+
+
+## Visão geral
+
+A interface do RStudio está normalmente dividida em quatro áreas principais.
+
+```{=html}
+<div class="rstudio-layout">
+  <div class="pane source">
+    <strong>Source</strong>
+    <span>Scripts e documentos</span>
+  </div>
+  <div class="pane environment">
+    <strong>Environment / History</strong>
+    <span>Objetos e histórico</span>
+  </div>
+  <div class="pane console">
+    <strong>Console</strong>
+    <span>Execução de comandos R</span>
+  </div>
+  <div class="pane files">
+    <strong>Files / Plots / Packages / Help</strong>
+    <span>Ficheiros, gráficos, pacotes e ajuda</span>
+  </div>
+</div>
+```
+
+

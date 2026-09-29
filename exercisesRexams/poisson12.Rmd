@@ -1,0 +1,43 @@
+```{r data-generation, echo=FALSE, results="hide"}
+library(exams)
+vehicles <- 9
+weekly_mean <- 3.5
+not_rented <- 3
+a <- dpois(vehicles - not_rented, weekly_mean)
+b <- 4 * weekly_mean
+pair <- function(x, y) sprintf("(a) %.4f; (b) %.1f", x, y)
+answers <- c(pair(a, b), pair(ppois(vehicles - not_rented, weekly_mean), b),
+  pair(dpois(not_rented, weekly_mean), b),
+  pair(dpois(vehicles, weekly_mean), weekly_mean))
+solutions <- c(TRUE, FALSE, FALSE, FALSE)
+ord <- sample(seq_along(answers))
+answers <- answers[ord]
+solutions <- solutions[ord]
+```
+
+Question
+========
+
+A motorhome rental company owns `r vehicles` vehicles. During summer, weekly demand follows a Poisson distribution with mean `r sprintf("%.1f", weekly_mean)` and is independent from week to week.
+
+(a) What is the probability that exactly `r not_rented` vehicles are not rented in one week?  
+(b) What is the expected demand over four weeks?
+
+Choose the pair containing the two correct answers.
+
+```{r question-list, echo=FALSE, results="asis"}
+answerlist(answers, markup = "markdown")
+```
+
+Solution
+========
+
+For (a), demand must equal $`r vehicles`-`r not_rented`=`r vehicles - not_rented`$, giving `r sprintf("%.4f", a)`. For (b), expected demand over four weeks is $4\times `r sprintf("%.1f", weekly_mean)`=`r sprintf("%.1f", b)`$.
+
+Meta-information
+================
+
+exname: Poisson unrented vehicles  
+extype: schoice  
+exsolution: `r mchoice2string(solutions)`  
+exshuffle: TRUE

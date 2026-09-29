@@ -1,0 +1,28 @@
+## O que é o R?
+
+
+
+O **R** é uma linguagem de programação e, simultaneamente, um ambiente de software destinado à computação estatística, à análise de dados e à produção de gráficos.
+
+Entre as suas principais características destacam-se:
+
+* permite **manipular, explorar e analisar dados** de forma eficiente;
+
+* possui uma ampla capacidade de **visualização gráfica**, permitindo produzir gráficos de elevada qualidade;
+
+* disponibiliza um grande número de **funções estatísticas**, incluindo métodos para análise exploratória de dados, inferência estatística, modelação e simulação;
+
+* é particularmente adequado para a **manipulação e análise de dados**;
+
+* encontra-se em desenvolvimento contínuo, com a colaboração de investigadores e programadores de todo o mundo. O desenvolvimento do R é coordenado pelo **R Core Team**;
+
+* é distribuído gratuitamente e disponibilizado como **software de código aberto** (*open source*);
+
+* pode ser obtido através da **Comprehensive R Archive Network (CRAN)**.
+
+Esta é a página oficial do projeto R: [https://www.r-project.org/](https://www.r-project.org/)
+
+
+O principal repositório de distribuição de *packages* do R é o CRAN: [https://cran.r-project.org/](https://cran.r-project.org/)
+
+

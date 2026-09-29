@@ -1,0 +1,10 @@
+/_site/
+/.quarto/
+/.Rproj.user/
+
+**/*.quarto_ipynb
+/.Rhistory
+**/.Rhistory
+**/.Rproj.user/
+**/.quarto/
+**/_book/

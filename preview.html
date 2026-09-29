@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pré-visualização · Probabilidades e Estatística B</title>
+  <style>
+    :root { color-scheme: light; font-family: system-ui, sans-serif; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #e8eef5; color: #17283c; }
+    header { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1.5rem; padding: .8rem 1.2rem; background: #163c70; color: white; }
+    h1 { margin: 0; font-size: 1rem; font-weight: 650; }
+    .controls { display: flex; flex-wrap: wrap; align-items: center; gap: .55rem; margin-left: auto; }
+    button, a { font: inherit; }
+    button { padding: .35rem .7rem; color: white; background: transparent; border: 1px solid #a9c2df; border-radius: .35rem; cursor: pointer; }
+    button[aria-pressed="true"] { background: white; color: #163c70; }
+    header a { color: white; }
+    main { display: flex; justify-content: center; padding: 1rem; min-height: calc(100vh - 3.8rem); }
+    iframe { width: 100%; height: calc(100vh - 5.8rem); border: 1px solid #a9b9cb; border-radius: .5rem; background: white; box-shadow: 0 12px 35px #173a6022; transition: max-width .2s ease; }
+    body.mobile iframe { max-width: 390px; }
+    .note { position: absolute; left: -10000px; }
+    @media (max-width: 600px) { .controls { margin-left: 0; } main { padding: .5rem; } iframe { height: calc(100vh - 7rem); } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Pré-visualização · Probabilidades e Estatística B</h1>
+    <div class="controls" aria-label="Largura de pré-visualização">
+      <button id="desktop" type="button" aria-pressed="true">Computador</button>
+      <button id="mobile" type="button" aria-pressed="false">Telemóvel</button>
+      <a href="_site/index.html" target="_blank" rel="noopener">Abrir site completo ↗</a>
+    </div>
+  </header>
+  <main>
+    <iframe title="Website Probabilidades e Estatística B" src="_site/index.html"></iframe>
+  </main>
+  <script>
+    const desktop = document.getElementById('desktop');
+    const mobile = document.getElementById('mobile');
+    function setMode(isMobile) {
+      document.body.classList.toggle('mobile', isMobile);
+      desktop.setAttribute('aria-pressed', String(!isMobile));
+      mobile.setAttribute('aria-pressed', String(isMobile));
+    }
+    desktop.addEventListener('click', () => setMode(false));
+    mobile.addEventListener('click', () => setMode(true));
+  </script>
+</body>
+</html>

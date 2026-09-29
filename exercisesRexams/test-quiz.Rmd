@@ -1,0 +1,35 @@
+---
+title: "test"
+output: html_document
+---
+
+Question
+========
+Which of these is NOT a component of a READy workflow?
+
+Answerlist
+----------
+* Reproducible
+* Efficient
+* Analytical
+* Documented
+
+
+Solution
+========
+READy stands for: Reproducible, efficient, automated, and documented 
+
+
+Answerlist
+----------
+* False
+* False
+* True
+* False
+
+
+Meta-information
+================
+exname: test quiz
+extype: schoice
+exsolution: 0010

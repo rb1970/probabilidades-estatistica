@@ -1,0 +1,38 @@
+```{r data-generation, echo=FALSE, results="hide"}
+library(exams)
+n <- 18
+p <- 0.25
+x <- 2
+correct <- pbinom(x + 2, n, p) - pbinom(x - 1, n, p)
+answers <- sprintf("%.4f", c(correct, pbinom(x + 2, n, p),
+  pbinom(x + 1, n, p) - pbinom(x - 1, n, p), dbinom(x, n, p)))
+solutions <- c(TRUE, FALSE, FALSE, FALSE)
+ord <- sample(seq_along(answers))
+answers <- answers[ord]
+solutions <- solutions[ord]
+```
+
+Question
+========
+
+In a laboratory experiment, `r n` animals receive a test drug. Each animal has probability `r sprintf("%.2f", p)` of dying, independently of the others. What is the probability that between `r x` and `r x + 2` animals die, inclusive?
+
+Choose the answer rounded to four decimal places.
+
+```{r question-list, echo=FALSE, results="asis"}
+answerlist(answers, markup = "markdown")
+```
+
+Solution
+========
+
+Let $X$ denote the number of animals that die. Then $X \sim \operatorname{Bin}(`r n`, `r sprintf("%.2f", p)`)$. Hence
+$P(`r x`\le X\le `r x + 2`)=P(X\le `r x + 2`)-P(X\le `r x - 1`)=`r sprintf("%.4f", correct)`$.
+
+Meta-information
+================
+
+exname: Binomial interval probability  
+extype: schoice  
+exsolution: `r mchoice2string(solutions)`  
+exshuffle: TRUE
