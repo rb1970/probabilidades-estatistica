@@ -1,0 +1,9 @@
+:root { --peb-blue: #285c86; }
+.exercise-workspace .qwebr-editor { min-height: 9rem; }
+details { margin: .7rem 0 1.3rem; }
+details summary { cursor: pointer; font-weight: 600; color: var(--peb-blue); }
+.rstudio-layout { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: .5rem; margin: 1rem 0; }
+.rstudio-layout .pane { border: 1px solid #dee2e6; border-radius: .3rem; padding: 1rem; min-height: 6rem; background: #f8f9fa; }
+.rstudio-layout strong, .rstudio-layout span { display: block; }
+.rstudio-layout span { margin-top: .3rem; color: #555; }
+@media (max-width: 600px) { .rstudio-layout { grid-template-columns: 1fr; } }

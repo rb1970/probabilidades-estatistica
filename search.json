@@ -1,0 +1,82 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "PE.B | Probability and Statistics",
+    "section": "",
+    "text": "This tutorial provides a brief introduction to the R programming language and the RStudio development environment. The document was designed as supplementary material for any course on Probability and Statistics.\nThroughout the tutorial, examples are provided on how to use R to solve problems related to different topics related to Probability and Inferencial Statistics. The examples are accompanied by interactive exercises, allowing students to edit and run the code directly without leaving the tutorial. An internet connection is required, and execution may take a few seconds. You can also copy the code into R or RStudio.\n\nLearning Path\n\n\n\n\n\nCourse content. Artwork by @allison_horst\n\n\nThis tutorial begins with a brief description introducing R and RStudio. R is then used to explore selected topics.\n\nIntroduction:\n2.1 What is R?\n2.2 What is RStudio?\n2.3 Documentation\nProbability:\n3.1 Discrete distributions\n3.2 Continuous distribution\nStatistics",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Welcome to PE B</span>"
+    ]
+  },
+  {
+    "objectID": "whatsR.html",
+    "href": "whatsR.html",
+    "title": "2  Introduction to R and RStudio",
+    "section": "",
+    "text": "2.1 What is R?\nThis section contains a brief introduction to R and RStudio.\nR is both a programming language and a software environment for statistical computing, data analysis, and data visualization. It is widely used in statistics, data science, research, and education.\nSome of its main features include:\nYou can find the official website of the R Project at https://www.r-project.org/. The main repository for R packages is the Comprehensive R Archive Network (CRAN) (https://cran.r-project.org/).",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction to R and RStudio</span>"
+    ]
+  },
+  {
+    "objectID": "whatsR.html#whatR",
+    "href": "whatsR.html#whatR",
+    "title": "2  Introduction to R and RStudio",
+    "section": "",
+    "text": "Artwork by @allison_horst\n\n\n\n\n\nefficient tools for manipulating, exploring, and analysing data;\nextensive data visualization capabilities for producing high-quality graphics;\na comprehensive collection of statistical methods, including tools for exploratory data analysis, statistical inference, modelling, and simulation;\npowerful and flexible tools for data manipulation and analysis;\ncontinuous development supported by a worldwide community of researchers and developers, with the core development of R coordinated by the R Core Team;\nfree distribution as open-source software;\naccess to a vast ecosystem of additional packages that extend R’s functionality.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction to R and RStudio</span>"
+    ]
+  },
+  {
+    "objectID": "whatsR.html#whatRStudio",
+    "href": "whatsR.html#whatRStudio",
+    "title": "2  Introduction to R and RStudio",
+    "section": "2.2 What is RStudio?",
+    "text": "2.2 What is RStudio?\n\n\n\n\n\nRStudio\n\n\nRStudio is an Integrated Development Environment (IDE) designed to make working with R easier and more convenient.\nIt is important to distinguish between R and RStudio: R is the programming language and computational environment, whereas RStudio is an application that provides a user-friendly interface for working with R. It makes it easier to write and run code, manage files, inspect data, create and view plots, install and manage packages, and access documentation.\nSome of the main advantages of RStudio are:\n\nyou can write, edit, and save code in script files;\nit makes it easy to run R commands and scripts;\nit brings together the source editor, console, plots, files, packages, environment, and help system in a single interface;\nit provides useful programming features such as syntax highlighting, keyboard shortcuts, and code completion;\nit helps you organise your work and encourages reproducible analyses.\n\nRStudio Desktop can be downloaded from the official Posit website at https://posit.co/download/rstudio-desktop.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction to R and RStudio</span>"
+    ]
+  },
+  {
+    "objectID": "whatsR.html#doc",
+    "href": "whatsR.html#doc",
+    "title": "2  Introduction to R and RStudio",
+    "section": "2.3 Documentation",
+    "text": "2.3 Documentation\n\n\n\n\n\nMore documents?\n\n\nOne of the advantages of R is the extensive documentation and learning resources available to users. In addition to the documentation built into R itself, there are official manuals, textbooks, tutorials, reference materials, and many other resources developed by the R community.\n\n2.3.1 R Manuals\nThe official R documentation provides comprehensive information about the language, its statistical and graphical capabilities, and its internal structure. The main manuals include:\n\nAn Introduction to R — an introduction to the R language and its main features;\nR Data Import/Export — guidance on importing data into R and exporting data from R;\nR Language Definition — a detailed description of the R programming language;\nWriting R Extensions — documentation primarily intended for developing R packages and other extensions;\nR Internals — a technical description of the internal structure and implementation of R;\nR Installation and Administration — information on installing, configuring, and administering R.\n\nThe official manuals are available from the Comprehensive R Archive Network (CRAN) at https://cran.r-project.org/manuals.html\n\n\n2.3.2 Books and Learning Resources\nThere are also several excellent books and online resources that are freely available. The following are particularly useful for learning R and applying it to data analysis, probability, and statistics:\n\nR for Data Science (2nd Edition), by Hadley Wickham, Mine Çetinkaya-Rundel, and Garrett Grolemund — a modern introduction to working with data in R. It covers data visualization, data transformation, importing data and programming.\nStatistical Inference via Data Science: A ModernDive into R and the Tidyverse (2nd Edition), by Chester Ismay, Albert Y. Kim, and Arturo Valdivia — an accessible introduction to statistical inference using R. It integrates statistical concepts with data analysis and provides numerous examples and exercises. It is particularly useful for students taking an introductory course in probability and statistics.\n\nThese three resources are particularly recommended as companions to this tutorial. R for Data Science is especially useful for learning how to work with data in R, while ModernDive and Introduction to Modern Statistics provide a closer connection between R and the statistical concepts covered in this course.\n\n\n2.3.3 Additional Resources\nThe following freely available resources may also be useful for further study or as reference material:\n\nAdvanced R (2nd Edition), by Hadley Wickham — a more advanced treatment of the R language, recommended for readers interested in understanding R programming in greater depth.\nUsing R for Data Analysis and Graphics — Introduction, Code and Commentary, by John Maindonald — examples and explanations of statistical analysis and graphics using R;\nPractical Regression and Anova in R, by Julian Faraway — a practical introduction to linear regression, analysis of variance, model diagnostics, transformations, and related methods using R;\nR for Beginners, by Emmanuel Paradis — a concise introduction to R aimed at readers with little or no previous experience with the language;\nR Reference Card, by Tom Short — a compact reference summarising commonly used R functions and syntax, including commands for data manipulation, statistics, graphics, and programming;\nThe R Inferno, by Patrick Burns — an entertaining and useful guide to common pitfalls, unexpected behaviour, and programming mistakes in R.\n\nThese resources may use older R conventions or workflows that differ from best current practices, but they remain useful as supplementary references.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction to R and RStudio</span>"
+    ]
+  },
+  {
+    "objectID": "distribuicoes.html",
+    "href": "distribuicoes.html",
+    "title": "3  Probability distributions in R",
+    "section": "",
+    "text": "3.1 Discrete distributions\nFor most probability distributions, R provides four types of functions. The first letter of the function name indicates its purpose:\nThe appropriate distribution name is appended to this letter. For example, for the normal distribution, the four functions are dnorm(), pnorm(), qnorm(), and rnorm().\nThe following table lists some of the probability distributions available in R, together with their names used by R and function arguments.\nFor example, suppose \\[\nX \\sim \\operatorname{Binomial}(10,0.45).\n\\] To calculate \\(P(X=3)\\):\nFor example, suppose \\[\nX \\sim N(8.5,2.3^2).\n\\] To calculate \\(P(X\\leq10)\\):\nFor example, if \\[\nZ\\sim N(0,1),\n\\] the value \\(q\\) satisfying \\(P(Z\\leq q)=0.975\\) is obtained with:\nFor example, the following command generates 1000 observations from a normal distribution with mean \\(-4\\) and standard deviation \\(2\\):\nThus, once the R name of a distribution is known, its main functions are easy to identify. For example, the binomial distribution uses dbinom(), pbinom(), qbinom(), and rbinom(), while the normal distribution uses dnorm(), pnorm(), qnorm(), and `rnorm().\nIn the following sections, you will practice using these R functions. In each question, write the appropriate code or fill in each blank with the appropriate value.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Probability distributions in R</span>"
+    ]
+  },
+  {
+    "objectID": "distribuicoes.html#ddistr",
+    "href": "distribuicoes.html#ddistr",
+    "title": "3  Probability distributions in R",
+    "section": "",
+    "text": "\\(Bin(10,0.3)\\)\n\n\n\nBinomialHintSolution\n\n\n\nLet \\(X\\sim Bin(10,0.3)\\). Find \\(P(X=3)\\).\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\nConsider using the dbinom() function.\n\n\n\n\nSolution. \n\n\nCode\ndbinom(3,10,0.3)\n\n\n[1] 0.2668279\n\n\n\nRemember the function starting with a p means that you are either computing the mass or the density function;\nThe name of the distribution is binom.\n\n\n\n\n\n\n\n\n\n\\(H(100,40,20)\\)\n\n\n\nHypergeometricHintSolution\n\n\nLet \\(X\\sim H(100,40,20)\\). Find \\(P(X\\leq\n10)\\).\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\nConsider a population of size \\(100\\), containing \\(40\\) successes. A sample of size \\(20\\) is drawn from this population.\n\n\n\n\nSolution. \n\n\nCode\nphyper(q = 10,m = 40,n = 60,k = 20)\n\n\n[1] 0.8982561\n\n\n\n\n\n\n\n\n\n\n\\(G(0.6)\\)\n\n\n\nGeometricHintSolution\n\n\n\nLet \\(X\\sim G(0.6)\\). Find \\(P(X&gt;5)\\).\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\\(P(X&gt;5)=1-P(X\\leq5)\\)\nThen, use pgeom() function.\n\n\n\n\nSolution. \n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\n\n\n\\(P(6)\\)\n\n\n\nPoissonHintSolution\n\n\n\nLet \\(X\\sim P(6)\\). Find \\(P(X=4)\\).\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\nUse dpois() function.\n\n\n\n\nSolution. \n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Probability distributions in R</span>"
+    ]
+  },
+  {
+    "objectID": "distribuicoes.html#cdistr",
+    "href": "distribuicoes.html#cdistr",
+    "title": "3  Probability distributions in R",
+    "section": "3.2 Continuous distributions",
+    "text": "3.2 Continuous distributions\n\n\n\n\n\\(U(2,8)\\)\n\n\n\nUniformHintSolution\n\n\n\nLet \\(X\\sim U(2,8)\\). Find \\(P(X\\leq 5)\\).\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\nUse punif() because the question asks for a cumulative probability.\n\n\n\n\nSolution. \n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\n\n\n\\(N(100,15^2)\\)\n\n\n\nNormalHintSolution\n\n\n\nLet \\(X\\sim N(100,15^2)\\). Find \\(P(X&gt;130)\\).\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\nUse pnorm() with lower.tail = FALSE. Remember that R uses the standard deviation, not the variance.\n\n\n\n\nSolution. \n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\n\n\n\\(\\chi^2_{10}\\)\n\n\n\nChi-squareHintSolution\n\n\n\nLet \\(X\\sim\\chi^2_{10}\\). Find \\(a\\) such that \\(P(X\\leq a)=0.95\\).\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\nThe required value is a quantile, so use qchisq().\n\n\n\n\nSolution. \n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\n\n\n\\(t_{12}\\)\n\n\n\nStudent’s tHintSolution\n\n\n\nLet \\(X\\sim t_{12}\\). Find \\(P(-1.5&lt;X&lt;1.5)\\).\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\nSubtract the cumulative probability at the lower endpoint from the cumulative probability at the upper endpoint.\n\n\n\n\nSolution. \n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\n\n\n\\(F_{5,10}\\)\n\n\n\nFHintSolution\n\n\n\nLet \\(X\\sim F_{5,10}\\). Find the 95th percentile of \\(X\\).\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\nUse qf() and keep the numerator and denominator degrees of freedom in the order shown.\n\n\n\n\nSolution. \n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Probability distributions in R</span>"
+    ]
+  }
+]
